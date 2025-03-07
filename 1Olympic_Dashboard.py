@@ -6,9 +6,14 @@ from dash import html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
+import os
+import pathlib
+plik_csv = pathlib.Path(__file__).parent / 'athlete_events.csv'
 
-## Wczytanie danych z pliku CSV
-df = pd.read_csv(r"C:\Users\Karolina\Desktop\polibuda\WDPWJP\Lista_dash\projekt\athlete_events.csv")
+
+# Wczytanie pliku CSV
+df = pd.read_csv(plik_csv)
+
 
 #gotowy styl CSS 
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
@@ -31,7 +36,7 @@ layout1 = html.Div([
         min=1924,
         max=2020,
         value=2000,
-        marks={str(year): str(year) for year in range(1924, 2018, 4)},
+        marks={str(year): str(year) for year in range(1924, 2020, 4)},
         step=None,
         className="dbc" 
     )
